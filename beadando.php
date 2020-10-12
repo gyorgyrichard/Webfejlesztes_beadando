@@ -1,6 +1,6 @@
 <?php
 
-$conn =  new mysqli("localhost","root","");
+$conn =  new mysqli("localhost","root","","adatok");
 if ($conn->connect_errno) {
     die("Conenction failed: " . $conn->connect_error);
 }
@@ -36,6 +36,7 @@ if (isset($_POST['password']) != "") {
         }
         array_push($decoded_lines, $decode_char);
         $decode_char = (string)null;
+
         
 		
 		
@@ -49,6 +50,20 @@ if (isset($_POST['password']) != "") {
     foreach ($decoded_lines as $x) {
 
         split_strings($x);
+        /*$filename = 'adat'.".txt";
+        if (!file_exists($filename)) {
+            $fh = fopen($filename, 'w') or die("Nemlehet létrehozni a fájlt");
+        }
+        $ret = file_put_contents($filename, $x, FILE_APPEND | LOCK_EX);
+        if($ret === false) {
+            die('A fájl irása közben hiba lépett fel');
+        }
+        else {
+            echo "Sikeres fájlba írás";
+        }*/
+    
+    
+        
 		
     }
 
@@ -108,8 +123,10 @@ function split_strings($string)
 {
     $pieces = explode("*", $string);
     global $email, $pw;
+    
     array_push($email, $pieces[0]);
     array_push($pw, $pieces[1]);
+   
 }
 
 function decode($var, $hanyadik)
@@ -132,6 +149,7 @@ function decode($var, $hanyadik)
     }
 }
 function create_form(){
+
 echo"<!DOCTYPE html>
 <html>
 <head>
@@ -141,7 +159,7 @@ echo"<!DOCTYPE html>
 <div>
 <p>Név </p>
 <p>Neptun kód</p>
-<p>Hanyast érdemelnél</p>
+<p>Hanyast érdemelnél  </p>
 </div>
 <form action='index.php' method='POST'>
     <div>
