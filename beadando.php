@@ -83,22 +83,25 @@ if (isset($_POST['password']) != "") {
         }
         switch ($row['Titkos']) {
             case "piros":
-                echo "<script>document.body.style.backgroundColor='red';</script>";
+                echo "<script>document.getElementById('clr').style.backgroundColor='red';</script>";
                 break;
             case "zold":
-                echo "<script>document.body.style.backgroundColor='green';</script>";
+                echo "<script>document.getElementById('clr').style.backgroundColor='green';</script>";
                 break;
             case "sarga":
-                echo "<script>document.body.style.backgroundColor='yellow';</script>";
+                echo "<script>document.getElementById('clr').style.backgroundColor='yellow';</script>";
                 break;
             case "kek":
-                echo "<script>document.body.style.backgroundColor='blue';</script>";
+                echo "<script>document.getElementById('clr').style.backgroundColor='blue';</script>";
                 break;
             case "fekete":
-                echo "<script>document.body.style.backgroundColor='black';</script>";
+                echo "<script>document.getElementById('clr').style.backgroundColor='black';
+                              document.getElementById('t1').style.color='white';
+                              document.getElementById('t2').style.color='white';
+                              document.getElementById('t3').style.color='white';</script>";
                 break;
             case "feher":
-                echo "<script>document.body.style.backgroundColor='white';</script>";
+                echo "<script>document.getElementById('clr').style.backgroundColor='white';</script>";
                 break;
         }
 
@@ -155,28 +158,41 @@ echo"<!DOCTYPE html>
 <head>
     <link rel='stylesheet' href='style.css'>
 </head>
+<style>
+body {
+    min-height: 100%;
+  background-image: url('bg.jpg');
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+</style>
 <body>
-<div>
-<p>Név </p>
-<p>Neptun kód</p>
-<p>Hanyast érdemelnél  </p>
-</div>
-<form action='index.php' method='POST'>
-    <div>
+<form action='beadando.php' method='POST'>
+<div class='colorbox'></div>
+
+    <div class='box'>
         <div>
-            <h1 class='login_popup_h1'>Login</h1>
-            <h2 class='login_popup_h2'>Please enter your details</h2>
+            <h1 class='login'>Add meg a bejelentkezési adataidat!</h1>
             <div>
-                <h3 class='username'>Username</h3>
-                <input type='email' name='username' placeholder='Username'>
+                <h3 class='username'>Felhasználónév</h3>
+                <input type='email' name='username' id='imputfield1' >
             </div>
             <div>
-                <h3 class='password'>Password</h3>
-                <input type='password' name='password' placeholder='Password'>
+                <h3 class='password'>Jelszó</h3>
+                <input type='password' name='password' id='imputfield2' >
             </div>
-            <input type='submit' id='login_button' value='Login'></input>
+            <div class='button'>
+            <input type='submit' id='login_button' value='Bejelentkezés'></input>
+            </dev>
         </div>
-        <span id = 'error_msg'></span>
+        <span class='msg' id = 'error_msg'></span>
+        <div class ='datas' id='clr'>
+                <p id ='t1'>Név: György Richárd </p>
+                <p id ='t2'>Neptun kód: MQK493</p>
+                <p id ='t3'>Hanyast érdemelnél: 5  </p>
+            </div>
+
     </div>
 </form>
 </body>

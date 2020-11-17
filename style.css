@@ -1,0 +1,36 @@
+.datas {
+    border: 3px solid black;
+    width: 200px;
+    height: 150px;
+    display: inline-block;
+    font-size: 20px;
+    margin-top: 20px;
+
+}
+
+.login,.username,.password {
+    color: black;
+    text-align: center;
+  }
+
+.button{
+    padding-top: 20px;
+}
+
+.msg{
+    color: red;
+    display: block;
+    margin-top: 10px;
+}
+
+.box{
+    text-align: center;
+    
+}
+
+
+
+
+
+
+
